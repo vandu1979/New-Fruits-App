@@ -1,17 +1,19 @@
-// const React = require('react')
-import React, { Component } from "react";
-    class Show extends React.Component {
-       render () {
-        console.log(this.props.fruits);
+import React, { Component } from 'react'
+
+export default class Index extends Component {
+  render() { 
+    console.log(this.props.fruits);
         const { fruits } = this.props;
-        return (
+        
+    return (
             <div>
                 <nav>
                     <a href="/fruits/new"> Create a New fruit</a>
                 </nav>
           <h1> Fruits Index Page</h1> 
 
-         <ul> \*loop through the fruits array using map*\
+          {/* \*loop through the fruits array using map*\ */}
+         <ul>
 
                  {fruits.map((fruit) => {
                               return (
@@ -25,6 +27,10 @@ import React, { Component } from "react";
                                           ? `It is ready to eat`
                                           : `It is not ready to eat`}
                                       <br />
+                                      <form action={`/fruits/${fruit.id}?_method=Delete`} method="POST">
+                                        <input type='submit' value='DELETE'/>
+                                      </form>
+                                      <a href={`/fruits${fruit.id}/edit`}>Edit this Fruit</a>
                                   </li>
                               );
                           })}
@@ -36,6 +42,9 @@ import React, { Component } from "react";
         }
      }
      module.exports  = Index; 
+
+
+
 
 
 
